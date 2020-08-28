@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8">
+<title>enter a deliveryMan</title>
+</head>
+<body>
+	<div layout:fragment="content1">
+		<div class="container mt-5">
+			<div class="card">
+				<div class=" card-header" th:if="${mode=='new'}">Entry form</div>
+				<div class=" card-header" th:if="${mode=='update'}">Update form</div>
+				<div class=" card-body">
+					<form th:action="@{/admin/save1}" method="post">
+					<div class="form-group">
+							<label for="id">ID:</label> <input type="text"
+								class="form-control" 
+								name="id" th:value="${deliveryMan.id}"> 
+						</div>
+
+						<div class="form-group">
+							<label for="firstName">firstName:</label> <input type="text"
+								class="form-control" placeholder="Enter firstName"
+								name="firstName" th:value="${deliveryMan.firstName} "> <span
+								th:errors="${deliveryMan.firstName}" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label for="lastName">lastName:</label> <input type="text"
+								class="form-control" placeholder="Enter lastName"
+								name="lastName" th:value="${deliveryMan.lastName}"> <span
+								th:errors="${deliveryMan.lastName}" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label for="phoneNumber">phoneNumber:</label> <input type="text"
+								class="form-control" placeholder="Enter phoneNumber"
+								name="phoneNumber" th:value="${deliveryMan.phoneNumber}">
+							<span th:errors="${deliveryMan.phoneNumber}" class="text-danger"></span>
+
+						</div>
+
+						<!-- <div class="form-group">
+    <label for="orders">phoneNumber:</label>
+    <input type="text" class="form-control" placeholder="Enter orders" name="orders" 
+    th:value="${deliveryMan.orders}">
+    <span th:errors="${deliveryMan.orders}" class="text-danger"></span>
+  </div> -->
+
+						<button type="submit" class="btn btn-primary">Save</button>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</body>
+</html>

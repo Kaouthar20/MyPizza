@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8">
+<title>create an order</title>
+</head>
+<body>
+	<div layout:fragment="content1">
+		<div class="container">
+			<div class="card">
+				<div class="card-header">
+					<b>Registration completed successfully</b>
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<label for="idPizza">ID:</label> <strong><label
+							th:text="${pizza.idPizza}"></label></strong>
+					</div>
+					
+					
+					<div class="card-body">
+					<div class="form-group">
+						<label for="id">ID:</label> <strong><label
+							th:text="${oreder.id}"></label></strong>
+					</div>
+					<div class="card-body">
+					<div class="form-group">
+						<label for="price">ID:</label> <strong><label
+							th:text="${pizza.price}"></label></strong>
+					</div>
+					
+					<div class="form-group">
+						<label for="orderDate">Order Date:</label> <strong><label
+							th:text="${order.orderDate}"></label></strong>
+					</div>
+					</div>
+					<div class="form-group">
+						<label for="amount">Amount:</label> <strong><label
+							th:text="${order.amount}"></label></strong>
+					</div>
+					
+					<div class="form-group">
+						<label for="status">sent:</label> <strong><label
+							th:text="${order.status}"></label></strong>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- name space -->
+<html xmlns:th="http://www.thymleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	>
+<head>
+<meta charset="utf-8">
+<title>page layout</title>
+<!-- ce lien pour parteger ce qui est commun entre les pages hml -->
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<!-- header qui est fixe -->
+</head>
+<body>
+
+
+	<!-- la barre de menu -->
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<ul class="navbar-nav ">
+
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"> <b>Pizzas</b>
+			</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/user/pizza}"> search</a>
+					 <a class="dropdown-item" th:href="@{/admin/formPizza}">add </a>
+						
+
+				</div></li>
+
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"> <b>DeliveryMan</b>
+			</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/admin/deliveryMan}">Search</a>
+					<a class="dropdown-item" th:href="@{/admin/formDM}">add </a>
+				</div></li>
+
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"> <b>Servers</b>
+			</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/admin/servers}"> Search</a> <a
+						class="dropdown-item" th:href="@{/admin/formSR}">add </a>
+				</div></li>
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"> <b>Customers</b>
+			</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/admin/customer}"> Search</a> <a
+						class="dropdown-item" th:href="@{/user/formCS}">add </a>
+				</div></li>
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"> <b>Ingrediants</b>
+			</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/user/ingrediant}"> Search</a>
+					<a class="dropdown-item" th:href="@{/admin/formIng}">add </a>
+				</div></li>
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"> <b>Bills</b>
+			</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/user/bill}"> Search</a> <a
+						class="dropdown-item" th:href="@{/admin/formBill}">add </a>
+				</div></li>
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"><b>Orders</b> </a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/admin/order}"> Search</a> <!-- <a
+						class="dropdown-item" th:href="@{/admin/formOR}">add </a> -->
+				</div></li></ul>
+<!-- <ul class="navbar-nav ml-auto">
+<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbardrop"
+				data-toggle="dropdown"><span sec:authentication="name"></span> 
+				</a>
+				
+				<div class="dropdown-menu">
+				<a sec:authorize="!isAuthenticated()" th:href="#">Logout</a>
+					<a class="dropdown-item"th:href="@{/login?logout}" > login</a> 
+					<a class="dropdown-item" th:href="#"> profile</a>
+				</div></li>
+				</ul>
+
+ -->
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li><a class="btn btn-danger btn-sm " th:href="@{/login?logout}">Logout</a></li>
+		</ul>
+
+	</nav>
+	<!-- section qui est variable -->
+	<section layout:fragment="content1"></section>
+	<!-- footer qui est fixe -->
+	<footer>
+		<div class="navbar-fixed-bottom">
+			<small>@Pizza address</small>
+		</div>
+
+	</footer>
+
+</body>
+</html>

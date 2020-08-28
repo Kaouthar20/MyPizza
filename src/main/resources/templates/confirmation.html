@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8">
+<title>enter a customer</title>
+</head>
+<body>
+	<div layout:fragment="content1">
+		<div class="container">
+			<div class="card">
+				<div class="card-header">
+					<b>Registration completed successfully</b>
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<label for="id">ID:</label> <strong><label
+							th:text="${customer.id}"></label></strong>
+					</div>
+					<div class="form-group">
+						<label for="firstName">First name:</label> <strong><label
+							th:text="${customer.firstName}"></label></strong>
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last name:</label> <strong><label
+							th:text="${customer.lastName}"></label></strong>
+					</div>
+					<div class="form-group">
+						<label for="address">Address:</label> <strong><label
+							th:text="${customer.address}"></label></strong>
+					</div>
+					<div class="form-group">
+						<label for="email">Email:</label> <strong><label
+							th:text="${customer.email}"></label></strong>
+					</div>
+					<div class="form-group">
+						<label for="phoneNumber">Phone number:</label> <strong><label
+							th:text="${customer.phoneNumber}"></label></strong>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8">
+<title>Servers</title>
+</head>
+<body>
+
+	<div layout:fragment="content1">
+		<div class="container mt-5">
+			<div class="card">
+				<div class="card-header">DeliveryMan list</div>
+				<div class="card-body">
+
+					<form th:action="@{/admin/deliveryMan}" method="get">
+						<div class="mb-3">
+							<label class="control-label">Key word:</label> <input type="text"
+								name="keyWord" th:value="${keyWord}" />
+							<button class="btn btn-success">Search</button>
+						</div>
+					</form>
+
+
+
+					<table class="table">
+
+						<tr>
+							<th>id</th>
+							<th>firstName</th>
+							<th>lastName</th>
+							<th>phoneNumber</th>
+				
+						
+						</tr>
+						<!-- affichage de liste des servers -->
+						<tr th:each="d:${deliveryMan}">
+							<td th:text="${d.id}"></td>
+							<td th:text="${d.firstName}"></td>
+							<td th:text="${d.lastName}"></td>
+							<td th:text="${d.phoneNumber}"></td>
+							<td><a
+								onclick="javascript:return confirm('etes vous sure de vouloir supprimer?')"
+								class="btn btn-danger"
+								th:href="@{/admin/deleteDeliveryMan(id=${d.id},page=${currentPage},keyWord=${keyWord},size=${size})}">
+									Delete</a></td>
+									 <td>
+ <a class="btn btn-success" th:href="@{/admin/updateDM(id=${d.id})}">Update</a>
+ </td>
+						</tr>
+					</table>
+					<ul class="nav nav-pills">
+						<!-- mettre status au lieu de page pour afficher index de element pas l'element -->
+						<li th:each="page,status:${pages}"><a
+							th:class="${status.index==currentPage?'btn btn-primary':'btn'}"
+							th:href="@{/admin/deliveryMan(page=${status.index},size=${size},keyWord=${keyWord})}"
+							th:text="${status.index}"></a></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8">
+<title>enter a Pizza</title>
+</head>
+<body>
+	<div layout:fragment="content1">
+		<div class="col-md-6">
+			<div class="panel panel-default"></div>
+			<div class=" panel-heading">new pizza</div>
+			<div class=" panel-body">
+				<form th:action="@{/admin/save}" method="post">
+
+					<div class="form-group">
+						<label class="control-label">ID:</label><label
+							th:text="${pizza.id}"></label> <input type="hidden"
+							class="form-control" name="id" th:value="${pizza.id}">
+
+					</div>
+					<div class="form-group">
+						<label for="name">name:</label> <input type="text"
+							class="form-control" placeholder="Enter name" name="name"
+							th:value="${pizza.name}"> <span
+							th:errors="${pizza.name}" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label for="price">price:</label> <input type="text"
+							class="form-control" placeholder="Enter price" name="price"
+							th:value="${pizza.price}"> <span
+							th:errors="${pizza.price}" class="text-danger"></span>
+					</div>
+					<!-- <div class="form-group">
+						<label for="amount">amount:</label> <input type="text"
+							class="form-control" placeholder="Enter amount" name="amount"
+							th:value="${pizza.amount}"> <span
+							th:errors="${pizza.amount}" class="text-danger"></span>
+					</div> -->
+					
+					<button type="submit" class="btn btn-primary">Save</button>
+				</form>
+
+			</div>
+
+
+		</div>
+
+	</div>
+</body>
+</html>

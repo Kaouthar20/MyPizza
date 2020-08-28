@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{layout}">
+<!-- Demander à thymeleaf de decoré la page par layout -->
+<head>
+<meta charset="utf-8" />
+<title>My Pizza</title>
+
+</head>
+<body>
+	<div layout:fragment="content1">
+		<!-- demander à thymeleaf de decorer par le contenu de page layout -->
+		<div class="container mt-5">
+			<div class="card">
+				<div class="card-header">Pizzas list</div>
+				<div class="card-body">
+					<!-- formulaire de recherche -->
+					<form th:action="@{/user/pizza}" method="get">
+						<div class="mb-3">
+							<label class="control-label">Key word:</label> <input type="text"
+								name="keyWord" th:value="${keyWord}" />
+							<button class="btn btn-success">Search</button>
+						</div>
+					</form>
+
+					<table class="table">
+
+
+						<tr>
+							<th>id</th>
+							<th>name</th>
+							<th>price</th>
+							<!--  <th>ingrediants</th> -->
+						</tr>
+						<!-- affichage de liste des pizzas -->
+						<tr th:each="p:${pizzas}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.name}"></td>
+							<td th:text="${p.price}"></td>
+						  <!--   <td th:text="${p.ingrediants}"></td> -->
+
+							<!-- <td ><img alt="" th:src="@{/image1.jpg}"></td> -->
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+								onclick="javascript:return confirm('etes vous sure?')"
+								class="btn btn-danger"
+								th:href="@{/admin/deletePizza(id=${p.id},page=${currentPage},size=${size},keyWord=${keyWord})}">Delete</a>
+							</td>
+
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary"
+								th:href="@{/admin/edit(id=${p.id})}">Update</a></td>
+								
+							<td sec:authorize="hasRole('ROLE_USER')"><a
+								onclick="javascript:return confirm('etes vous sure?')"
+								class="btn btn-success"
+								th:href="@{/user/createOrder(idPizza=${p.id})}">toSelect</a></td>
+						</tr>
+					</table>
+					<!-- pagination -->
+					<ul class="nav nav-pills">
+						<li th:each="page,stutus:${pages}">
+							<!-- stutus est la page/btn pour metrre espace entre les pages --> <a
+							th:class="${stutus.index==currentPage?'btn btn-primary':'btn'}"
+							th:href="@{/user/pizza(page=${stutus.index},size=${size},keyWord=${keyWord})}"
+							th:text="${stutus.index} "></a>
+						</li>
+
+					</ul>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>
